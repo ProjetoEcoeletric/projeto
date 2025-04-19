@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto EcoEletric</title>
-
-  <!-- FontAwesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,18 +15,13 @@
     header {
       text-align: center;
       background-color: #005a4f;
-      padding: 20px;
+      padding: 30px 20px;
       color: white;
     }
 
     header img {
       max-width: 300px;
       margin-bottom: 10px;
-    }
-
-    header h1 {
-      margin-top: 10px;
-      font-size: 2rem;
     }
 
     section {
@@ -106,7 +97,6 @@
       cursor: pointer;
     }
 
-    /* Quiz styling */
     .quiz-container {
       margin-top: 30px;
       text-align: center;
@@ -119,20 +109,21 @@
 
     .quiz-option {
       display: block;
-      margin: 5px;
+      margin: 5px auto;
       background-color: #00796b;
       color: white;
       border: none;
       padding: 10px;
       border-radius: 5px;
       cursor: pointer;
+      width: 60%;
+      transition: background-color 0.3s ease;
     }
 
     .quiz-option:hover {
       background-color: #004d40;
     }
 
-    /* Responsive Design */
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.5rem;
@@ -141,71 +132,75 @@
       .buttons {
         flex-direction: column;
       }
+
+      .quiz-option {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="ideia de logo.png" alt="Logo EcoEletric" />
+    <img src="ideia de logo.png" alt="Logotipo EcoEletric">
     <h1>EcoEletric - Conscientização sobre o Lixo Eletrônico</h1>
   </header>
 
   <section>
     <h2>O que é lixo eletrônico?</h2>
-    <p>O lixo eletrônico é composto por dispositivos eletrônicos descartados, como celulares, computadores, TVs, cabos, baterias, entre outros...</p>
+    <p>O lixo eletrônico é formado por dispositivos descartados como celulares, computadores, TVs, baterias, carregadores, cabos e eletrodomésticos. Esses materiais contêm metais pesados como mercúrio e chumbo, que causam contaminação no solo e na água.</p>
   </section>
 
   <section>
     <h2>Como separar e descartar corretamente?</h2>
     <ul>
-      <li><strong>Separe:</strong> Não misture lixo eletrônico com lixo comum...</li>
+      <li><strong>Separe:</strong> Não misture lixo eletrônico com lixo orgânico ou reciclável comum.</li>
+      <li><strong>Descarte:</strong> Leve os itens para postos de coleta, cooperativas ou empresas de reciclagem autorizadas.</li>
+      <li><strong>Importância:</strong> A reciclagem reduz o impacto ambiental e permite o reaproveitamento de metais raros.</li>
     </ul>
   </section>
 
   <section>
-    <h2>📹 Assista ao vídeo sobre Lixo Eletrônico:</h2>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/somevideoid" title="Lixo Eletrônico" allowfullscreen></iframe>
+    <h2>📹 Vídeo explicativo sobre o problema:</h2>
+    <div class="map-container">
+      <iframe src="https://www.youtube.com/embed/naAnmcR2u6M" title="Lixo Eletrônico" allowfullscreen></iframe>
     </div>
   </section>
 
-  <section>
-    <h2>🧑‍🏫 Quiz Interativo sobre Lixo Eletrônico</h2>
-    <div class="quiz-container">
-      <p class="quiz-question">O que é considerado lixo eletrônico?</p>
-      <button class="quiz-option" onclick="checkAnswer('errado')">Papel e Plástico</button>
-      <button class="quiz-option" onclick="checkAnswer('certo')">Computadores e Celulares</button>
-      <button class="quiz-option" onclick="checkAnswer('errado')">Latas e Garrafas</button>
-    </div>
+  <section class="quiz-container">
+    <h2>🧑‍🏫 Quiz Interativo</h2>
+    <p class="quiz-question">O que é considerado lixo eletrônico?</p>
+    <button class="quiz-option" onclick="checkAnswer('errado')">Papel e Plástico</button>
+    <button class="quiz-option" onclick="checkAnswer('certo')">Computadores e Celulares</button>
+    <button class="quiz-option" onclick="checkAnswer('errado')">Latas e Garrafas</button>
     <p id="quiz-feedback"></p>
   </section>
 
   <section>
     <h2>📍 Locais de Descarte Próximos</h2>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." loading="lazy"></iframe>
     </div>
   </section>
 
-  <section id="formulario">
-    <h2>📨 Contato / Denúncia de Descarte Irregular</h2>
+  <section>
+    <h2>📨 Denuncie descarte irregular</h2>
     <form>
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu e-mail" required />
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
       <textarea rows="5" placeholder="Descreva o local ou problema..." required></textarea>
-      <button type="submit">Enviar</button>
+      <button type="submit">Enviar denúncia</button>
     </form>
   </section>
 
   <script>
     function checkAnswer(answer) {
-      let feedback = document.getElementById('quiz-feedback');
+      const feedback = document.getElementById('quiz-feedback');
       if (answer === 'certo') {
-        feedback.textContent = "Parabéns! Resposta correta.";
+        feedback.textContent = "✅ Parabéns! Resposta correta.";
         feedback.style.color = "green";
       } else {
-        feedback.textContent = "Resposta incorreta. Tente novamente!";
+        feedback.textContent = "❌ Resposta incorreta. Tente novamente!";
         feedback.style.color = "red";
       }
     }
